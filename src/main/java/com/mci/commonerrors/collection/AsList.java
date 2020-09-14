@@ -48,6 +48,7 @@ public class AsList {
 
     /*
         - Arrays.asList 返回的 List 不支持增删操作
+          Arrays.asList 返回的 List 并不是我们期望的 java.util.ArrayList，而是 Arrays 的内部类 ArrayList
         - 对原始数组的修改会影响到我们获得的那个 List
      */
     private static void wrong2() {
@@ -55,7 +56,7 @@ public class AsList {
         List list = Arrays.asList(arr);
         arr[1] = "4";
         try {
-            list.add("5"); // UnsupportedOperationException
+            list.add("5"); // UnsupportedOperationException()
         } catch (Exception ex) {
             ex.printStackTrace();
         }

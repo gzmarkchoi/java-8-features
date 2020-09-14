@@ -11,6 +11,9 @@ import java.util.stream.IntStream;
 
 public class LinkedListVsArrayList {
 
+    /*
+        - 过于迷信教科书的大 O 时间复杂度
+     */
     public static void main(String[] args) {
         int elementCount = 100000;
         int loopCount = 100000;
@@ -37,6 +40,11 @@ public class LinkedListVsArrayList {
         finish = Instant.now();
         timeElapsed = Duration.between(start, finish).toMillis();
 
+        /*
+            - 翻看 LinkedList 源码发现，插入操作的时间复杂度是 O(1) 的前提是，你已经有了那个要插入节点的指针。
+              但，在实现的时候，我们需要先通过循环获取到那个节点的 Node，然后再执行插入操作。
+            - 对于插入操作，LinkedList 的时间复杂度其实也是 O(n)。
+         */
         System.out.println("LinkedList add(): " + timeElapsed);
 
         start = Instant.now();

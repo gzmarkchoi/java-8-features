@@ -11,6 +11,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ListVsMap {
+    /*
+        - 搜索 ArrayList 的时间复杂度是 O(n)，而 HashMap 的 get 操作的时间复杂度是 O(1)
+        - 要对大 List 进行单值搜索的话，可以考虑使用 HashMap，其中 Key 是要搜索的值，Value 是原始对象，
+          会比使用 ArrayList 有非常明显的性能优势
+     */
     public static void main(String[] args) throws InterruptedException {
         int elementCount = 1000000;
         int loopCount = 1000;
