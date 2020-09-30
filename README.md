@@ -1,5 +1,9 @@
-# java-8-features
-Project to learn Java 8 features
+# Java bad and good practices, design pattern
+This project is a reference on 
+ - Java 8 features
+ - bad and good practices
+ - design patterns
+ - common mistakes
 
 - Lambdas and Functional Interfaces
     - Consumer Functional Interface
