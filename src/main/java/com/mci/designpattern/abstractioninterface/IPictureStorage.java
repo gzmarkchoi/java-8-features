@@ -1,4 +1,4 @@
-package com.mci.designpattern.abstraction;
+package com.mci.designpattern.abstractioninterface;
 
 /*
     Ref -> Ch.05

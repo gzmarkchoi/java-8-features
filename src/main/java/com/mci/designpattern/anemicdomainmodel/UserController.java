@@ -1,6 +1,6 @@
 package com.mci.designpattern.anemicdomainmodel;
 
-/*
+/**
     A typical Anemic Domain Model example
  */
 ////////// Controller+VO(View Object) //////////

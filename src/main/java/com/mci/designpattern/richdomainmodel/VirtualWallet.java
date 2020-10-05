@@ -1,9 +1,11 @@
-package com.mci.designpattern.richdomainmode;
-
+package com.mci.designpattern.richdomainmodel;
 
 import java.math.BigDecimal;
 
-public class VirtualWallet { // Domain领域模型(充血模型)
+/**
+    Domain领域模型(充血模型/Rich Domain Model)
+ */
+public class VirtualWallet {
     private Long id;
     private Long createTime = System.currentTimeMillis();;
     private BigDecimal balance = BigDecimal.ZERO;
@@ -12,10 +14,36 @@ public class VirtualWallet { // Domain领域模型(充血模型)
         this.id = preAllocatedId;
     }
 
+    public void freeze(BigDecimal amount) {
+        //...
+    }
+    public void unfreeze(BigDecimal amount) {
+        //...
+    }
+    public void increaseOverdraftAmount(BigDecimal amount) {
+        //...
+    }
+    public void decreaseOverdraftAmount(BigDecimal amount) {
+        //...
+    }
+    public void closeOverdraft() {
+        //...
+    }
+    public void openOverdraft() {
+        //...
+    }
+
     public BigDecimal balance() {
         return this.balance;
     }
 
+    public BigDecimal getAvailableBalance() {
+        BigDecimal totalAvaliableBalance = this.balance.subtract(this.frozenAmount);
+        if (isAllowedOverdraft) {
+            totalAvaliableBalance += this.overdraftAmount;
+        }
+        return totalAvaliableBalance;
+    }
     public void debit(BigDecimal amount) {
         if (this.balance.compareTo(amount) < 0) {
             throw new InsufficientBalanceException(...);
