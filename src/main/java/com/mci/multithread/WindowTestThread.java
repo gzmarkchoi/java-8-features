@@ -25,12 +25,22 @@ class WindowThread extends Thread {
     @Override
     public void run() {
         while (true) {
-            if (ticket > 0) {
-                System.out.println(getName() + ":selling ticket, ticket: " + ticket);
-                ticket--;
-            } else {
-                break;
+            synchronized (WindowThread.class) { // reflexion, WindowThread is loaded once
+                if (ticket > 0) {
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println(getName() + ":selling ticket, ticket: " + ticket);
+                    ticket--;
+                } else {
+                    break;
+                }
             }
+
 
         }
     }

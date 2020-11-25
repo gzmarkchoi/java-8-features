@@ -27,11 +27,19 @@ class WindowRunnable implements Runnable {
     @Override
     public void run() {
         while (true) {
-            if (ticket > 0) {
-                System.out.println(Thread.currentThread().getName() + ":selling ticket, ticket: " + ticket);
-                ticket--;
-            } else {
-                break;
+            synchronized (this) { // all threads must share the same lock
+                if (ticket > 0) {
+                    try {
+                        Thread.sleep(100); // duplicate tickets or ticket -1
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println(Thread.currentThread().getName() + ":selling ticket, ticket: " + ticket);
+                    ticket--;
+                } else {
+                    break;
+                }
             }
         }
     }
